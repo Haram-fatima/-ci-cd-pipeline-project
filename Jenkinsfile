@@ -6,7 +6,7 @@ pipeline {
     }
 
     environment {
-        SERVER_IP = "10.171.221.161"
+        SERVER_IP = "10.108.66.161"
         SSH_USER = "jenkins"
         BACKEND_DIR = "backend"
         FRONTEND_DIR = "frontend"
