@@ -10,6 +10,8 @@ pipeline {
         SSH_USER = "jenkins"
         BACKEND_DIR = "backend"
         FRONTEND_DIR = "frontend"
+        BACKEND_PATH = "/home/malikraheel/deployment/backend"
+        FRONTEND_PATH = "/home/malikraheel/deployment/frontend"
     }
 
     stages {
@@ -55,14 +57,14 @@ pipeline {
 
         stage('Notify') {
             steps {
-                echo "Deployment Completed!"
+                echo 'Deployment completed successfully!'
             }
         }
     }
 
     post {
         failure {
-            echo "Deployment Failed! Triggering rollback..."
+            echo 'Deployment Failed! Triggering rollback...'
             sh 'bash deploy/rollback.sh'
         }
     }
