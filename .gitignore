@@ -17,3 +17,7 @@ Thumbs.db
 coverage/
 logs/
 
+
+monitoring/prometheus/data/
+monitoring/grafana/data/
+

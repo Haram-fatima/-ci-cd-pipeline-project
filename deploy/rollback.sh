@@ -1,16 +1,23 @@
 #!/bin/bash
 set -e
+<<<<<<< HEAD
 ssh jenkins@10.108.66.161 << 'ENDSSH'
 # Rollback backend
 latest_backup=$(ls -td ~/app-backups/* | head -1)
 rm -rf ~/app-backend
 cp -r "$latest_backup" ~/app-backend
 pm2 restart all
+=======
+>>>>>>> 8c33995 (Updated Jenkinsfile and deploy scripts, added backend archive and monitoring setup)
 
-# Rollback frontend
-latest_html=$(ls -td /var/www/html_backup_* | head -1)
-sudo rm -rf /var/www/html
-sudo cp -r "$latest_html" /var/www/html
-sudo nginx -s reload
+ssh jenkins@10.108.66.161 << 'ENDSSH'
+LATEST_BACKUP=$(ls -td ~/app-backups/* | head -1)
+if [ -d "$LATEST_BACKUP" ]; then
+  rm -rf ~/app-backend
+  cp -r "$LATEST_BACKUP" ~/app-backend
+  pm2 restart backend || true
+else
+  echo "No backup found to rollback!"
+fi
 ENDSSH
 
