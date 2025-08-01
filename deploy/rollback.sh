@@ -1,23 +1,15 @@
 #!/bin/bash
-set -e
-<<<<<<< HEAD
-ssh jenkins@10.108.66.161 << 'ENDSSH'
-# Rollback backend
-latest_backup=$(ls -td ~/app-backups/* | head -1)
-rm -rf ~/app-backend
-cp -r "$latest_backup" ~/app-backend
-pm2 restart all
-=======
->>>>>>> 8c33995 (Updated Jenkinsfile and deploy scripts, added backend archive and monitoring setup)
 
-ssh jenkins@10.108.66.161 << 'ENDSSH'
-LATEST_BACKUP=$(ls -td ~/app-backups/* | head -1)
-if [ -d "$LATEST_BACKUP" ]; then
-  rm -rf ~/app-backend
-  cp -r "$LATEST_BACKUP" ~/app-backend
-  pm2 restart backend || true
+echo "Rolling back backend..."
+
+# This is a basic example — update based on your logic
+ROLLBACK_DIR="/var/www/backend_backup"
+DEPLOY_DIR="/var/www/backend"
+
+if [ -d "$ROLLBACK_DIR" ]; then
+  rm -rf $DEPLOY_DIR
+  mv $ROLLBACK_DIR $DEPLOY_DIR
+  echo "Rollback successful!"
 else
-  echo "No backup found to rollback!"
+  echo "No backup found. Rollback failed."
 fi
-ENDSSH
-
