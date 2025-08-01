@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-ssh jenkins@10.171.221.161 << 'ENDSSH'
+ssh jenkins@10.108.66.161 << 'ENDSSH'
 # Rollback backend
 latest_backup=$(ls -td ~/app-backups/* | head -1)
 rm -rf ~/app-backend
