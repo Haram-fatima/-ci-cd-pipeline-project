@@ -25,12 +25,12 @@ This project sets up a professional CI/CD pipeline using Jenkins to automate the
 /deploy
 └── deploy_backend.sh
 └── rollback.sh
+docker/
+│   ├── docker-compose.yml   # Services: Jenkins, Prometheus, Grafana
+│   ├── prometheus.yml 
 Jenkinsfile
 README.md
 
-yaml
-Copy
-Edit
 
 ---
 
@@ -42,6 +42,11 @@ Edit
 - PM2 (Backend process management)
 - Bash (for deployment automation)
 - Git & GitHub
+- Docker & Docker Compose (for containerizing services)
+- Prometheus (for metrics collection and system monitoring)
+- grafana (for real-time dashboards and alerting)
+
+
 
 ---
 
@@ -52,17 +57,23 @@ Edit
 3. Packages both apps into `.tar.gz` files
 4. Deploys backend using `deploy/deploy_backend.sh`
 5. If deployment fails, `rollback.sh` restores the backup
+6. Monitoring Stack:
+       Prometheus scrapes metrics from Jenkins and system exporters
+       Grafana displays interactive dashboards with build/deploy statistics
+
+
 
 ---
+📌 How to Run Jenkins Job
 
-## 📌 How to Run Jenkins Job
+  Make sure the following requirements are met before running the Jenkins pipeline:
+ Jenkins has sufficient permissions to read/write to deployment and backup directories.
+ The Jenkins user has PM2 installed and accessible globally for managing backend processes.
+ Node.js and npm are installed on the system to allow building and testing of both backend and frontend applications.
+ Docker and Docker Compose are properly installed and running for container-based services.
+ Monitoring stack with Prometheus and Grafana is set up and running to track pipeline metrics and performance.
 
-Make sure:
-- Jenkins has permission to access `/home/malikraheel/deployment/`
-- Jenkins user has PM2 installed and running
-- Node/NPM are installed for both build environments
-
-Run the Jenkins job from UI or using a webhook push trigger.
+ docker-compose up -d
 
 ---
 
