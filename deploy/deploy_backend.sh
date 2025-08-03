@@ -4,12 +4,13 @@ echo "Starting backend deployment..."
 
 # Paths
 ARCHIVE="backend.tar.gz"
-DEPLOY_DIR="/home/malikraheel/deployment/backend"
-BACKUP_DIR="/home/jenkins/backups/backup_$(date +%F_%T)"
+DEPLOY_DIR="/var/lib/jenkins/deployment/backend"
+BACKUP_BASE="/var/lib/jenkins/backups"
+BACKUP_DIR="$BACKUP_BASE/backup_$(date +%F_%T)"
 
-# Backup old if exists
+# Backup old deployment if it exists
 if [ -d "$DEPLOY_DIR" ]; then
-  mkdir -p "$(dirname "$BACKUP_DIR")"
+  mkdir -p "$BACKUP_BASE"
   cp -r "$DEPLOY_DIR" "$BACKUP_DIR"
 fi
 
