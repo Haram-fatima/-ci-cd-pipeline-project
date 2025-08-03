@@ -1,58 +1,71 @@
-# Fullstack CI/CD Pipeline Project 🚀
 
-This project demonstrates a complete CI/CD pipeline for a fullstack application using **NestJS (Backend)** and **React (Frontend)**. It automates the entire lifecycle — build, test, package, and deploy — using **Jenkins**, with rollback support and production-ready setup on a local Ubuntu server.
+# CI/CD Pipeline with Jenkins for Web App (React + NestJS)
 
----
-
-## 🔧 Tech Stack
-
-- **Frontend**: React.js
-- **Backend**: NestJS
-- **CI/CD Tool**: Jenkins
-- **Process Manager**: PM2
-- **Package Manager**: npm
-- **Scripting**: Bash
+This project sets up a professional CI/CD pipeline using Jenkins to automate the build, test, package, and deployment processes of a web application. It uses React for the frontend and NestJS for the backend, and includes production-grade features like backups, rollback, and shell-based deployment scripts.
 
 ---
 
-## 📂 Project Structure
+## 🚀 Features
 
-/frontend # React frontend source
-/backend # NestJS backend source
+- Jenkins Pipeline for CI/CD
+- Auto build/test for both frontend and backend
+- Backend: NestJS (Node.js), Frontend: React
+- Tar-based artifact packaging
+- Shell scripts for backend deployment and rollback
+- Backup of previous backend deployments
+- PM2 for Node.js process management
+- GitHub integration
+
+---
+
+## 📁 Project Structure
+
+/backend
+/frontend
 /deploy
-└── deploy_backend.sh # Deployment script for backend
-└── rollback.sh # Rollback script for backend
-/Jenkinsfile # CI/CD pipeline definition
+└── deploy_backend.sh
+└── rollback.sh
+Jenkinsfile
+README.md
 
-
----
-
-## 🚀 CI/CD Pipeline Overview
-
-1. **Checkout** project from GitHub
-2. **Install** dependencies for both frontend & backend
-3. **Build** both apps
-4. **Package** built apps into `.tar.gz`
-5. **Deploy** backend using `deploy_backend.sh`
-6. **Rollback** if deployment fails (from backup)
+yaml
+Copy
+Edit
 
 ---
 
-## 🧪 Tests
+## 🛠 Technologies Used
 
-Currently prints "No tests yet" for placeholder — you can extend `npm test` sections in `package.json`.
+- Jenkins (CI/CD)
+- Node.js (NestJS Backend)
+- React (Frontend)
+- PM2 (Backend process management)
+- Bash (for deployment automation)
+- Git & GitHub
 
 ---
 
-## 🔙 Rollback Support
+## 🔁 Deployment Workflow
 
-If deployment fails, Jenkins automatically triggers `rollback.sh` to restore the last successful backup.
+1. Jenkins pulls code from GitHub
+2. Builds and tests backend and frontend
+3. Packages both apps into `.tar.gz` files
+4. Deploys backend using `deploy/deploy_backend.sh`
+5. If deployment fails, `rollback.sh` restores the backup
 
 ---
 
-## ✅ How to Run Locally
+## 📌 How to Run Jenkins Job
 
-Clone this repo and run Jenkins locally. Make sure Jenkins has permission to:
+Make sure:
+- Jenkins has permission to access `/home/malikraheel/deployment/`
+- Jenkins user has PM2 installed and running
+- Node/NPM are installed for both build environments
 
-```bash
-sudo chown -R jenkins:jenkins /var/lib/jenkins
+Run the Jenkins job from UI or using a webhook push trigger.
+
+---
+
+## ✅ Author
+
+Created by Haram Fatima  
