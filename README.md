@@ -31,7 +31,6 @@ docker/
 Jenkinsfile
 README.md
 
-
 ---
 
 ## 🛠 Technologies Used
@@ -47,7 +46,6 @@ README.md
 - grafana (for real-time dashboards and alerting)
 
 
-
 ---
 
 ## 🔁 Deployment Workflow
@@ -61,8 +59,6 @@ README.md
        Prometheus scrapes metrics from Jenkins and system exporters
        Grafana displays interactive dashboards with build/deploy statistics
 
-
-
 ---
 📌 How to Run Jenkins Job
 
@@ -72,10 +68,8 @@ README.md
  Node.js and npm are installed on the system to allow building and testing of both backend and frontend applications.
  Docker and Docker Compose are properly installed and running for container-based services.
  Monitoring stack with Prometheus and Grafana is set up and running to track pipeline metrics and performance.
-
- docker-compose up -d
-
 ---
+       docker-compose up -d
 
 ## ✅ Author
 
