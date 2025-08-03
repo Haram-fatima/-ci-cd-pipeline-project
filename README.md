@@ -68,6 +68,7 @@ README.md
  Node.js and npm are installed on the system to allow building and testing of both backend and frontend applications.
  Docker and Docker Compose are properly installed and running for container-based services.
  Monitoring stack with Prometheus and Grafana is set up and running to track pipeline metrics and performance.
+ 
 ---
        docker-compose up -d
 
